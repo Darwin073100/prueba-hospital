@@ -11,8 +11,19 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "doctor_id")
+    private Integer doctorId;
+    @Column(name = "office_id")
+    private Integer officeId;
     @Column(name="date_appointment")
     private LocalDateTime dateAppointment;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Doctor doctor;
+
+    @ManyToOne
+    @JoinColumn(name = "office_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Office office;
 
     public Appointment() {
     }

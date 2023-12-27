@@ -2,6 +2,8 @@ package com.prueba.hospital.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "office")
 public class Office {
@@ -11,6 +13,9 @@ public class Office {
     @Column(name = "office_number")
     private Integer officeNumber;
     private String floor;
+
+    @OneToMany(mappedBy = "office", fetch = FetchType.EAGER)
+    private List<Appointment> appointments;
 
     public Office() {
     }
