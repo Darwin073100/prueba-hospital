@@ -3,6 +3,7 @@ package com.prueba.hospital.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Entity
@@ -16,7 +17,7 @@ public class Appointment {
     @Column(name = "office_id")
     private Integer officeId;
     @Column(name="date_appointment")
-    private LocalDateTime dateAppointment;
+    private Date dateAppointment;
     @ManyToOne
     @JoinColumn(name = "doctor_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Doctor doctor;
@@ -28,7 +29,14 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(Integer id, LocalDateTime dateAppointment) {
+    public Appointment(Integer id, Integer doctorId, Integer officeId, Date dateAppointment) {
+        this.id = id;
+        this.doctorId = doctorId;
+        this.officeId = officeId;
+        this.dateAppointment = dateAppointment;
+    }
+
+    public Appointment(Integer id, Date dateAppointment) {
         this.id = id;
         this.dateAppointment = dateAppointment;
     }
@@ -41,11 +49,11 @@ public class Appointment {
         this.id = id;
     }
 
-    public LocalDateTime getDateAppointment() {
+    public Date getDateAppointment() {
         return dateAppointment;
     }
 
-    public void setDateAppointment(LocalDateTime dateAppointment) {
+    public void setDateAppointment(Date dateAppointment) {
         this.dateAppointment = dateAppointment;
     }
 }
