@@ -12,6 +12,7 @@ public class Office {
     private Integer id;
     @Column(name = "office_number")
     private Integer officeNumber;
+    @Column(unique = true)
     private String floor;
 
     @OneToMany(mappedBy = "office", fetch = FetchType.EAGER)

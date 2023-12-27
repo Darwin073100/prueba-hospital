@@ -1,7 +1,7 @@
 package com.prueba.hospital.repository;
 
 import com.prueba.hospital.entity.Doctor;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.ListCrudRepository;
 
-public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
+public interface DoctorRepository extends ListCrudRepository<Doctor, Integer> {
 }

@@ -11,11 +11,13 @@ public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(nullable = false)
     private String name;
-    @Column(name = "pa_surname")
+    @Column(name = "pa_surname", nullable = false)
     private String paSurname;
-    @Column(name = "ma_surname")
+    @Column(name = "ma_surname", nullable = false)
     private String maSurname;
+    @Column(nullable = false)
     private String speciality;
 
     @OneToMany(mappedBy = "doctor", fetch = FetchType.EAGER)
