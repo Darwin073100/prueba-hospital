@@ -27,4 +27,19 @@ public class AppointmentController {
     public ResponseEntity<List<Appointment>> findAll(){
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Appointment> findById(@PathVariable int id){
+        return new ResponseEntity<>(this.service.findById(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable int id){
+        try{
+            this.service.delete(id);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.resolve(500));
+        }
+    }
 }

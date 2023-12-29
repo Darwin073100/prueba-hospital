@@ -19,8 +19,8 @@ public class AppointmentService implements GenericFirms<Appointment> {
     }
 
     @Override
-    public Optional<Appointment> findById(int id) {
-        return Optional.empty();
+    public Appointment findById(int id) {
+        return this.repository.findById(id).orElse(null);
     }
 
     @Override
@@ -40,6 +40,6 @@ public class AppointmentService implements GenericFirms<Appointment> {
 
     @Override
     public void delete(int id) {
-
+        this.repository.deleteById(id);
     }
 }

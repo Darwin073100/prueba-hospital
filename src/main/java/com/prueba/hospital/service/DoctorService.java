@@ -20,8 +20,8 @@ public class DoctorService implements GenericFirms<Doctor> {
     }
 
     @Override
-    public Optional<Doctor> findById(int id) {
-        return this.repository.findById(id);
+    public Doctor findById(int id) {
+        return this.repository.findById(id).orElse(null);
     }
 
     @Override

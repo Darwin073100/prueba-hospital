@@ -1,5 +1,6 @@
 package com.prueba.hospital.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class Office {
     @Column(unique = true)
     private String floor;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "office", fetch = FetchType.EAGER)
     private List<Appointment> appointments;
 
@@ -25,6 +27,14 @@ public class Office {
         this.id = id;
         this.officeNumber = officeNumber;
         this.floor = floor;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
     }
 
     public Integer getId() {
